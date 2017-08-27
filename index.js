@@ -53,6 +53,7 @@ function wordComparison(_left, _right) {
 	var right = _right.toLowerCase();
 	var leftValue;
 	var rightValue;
+	var comparison;
 
 	/**
 	 * Use cases:
@@ -69,8 +70,23 @@ function wordComparison(_left, _right) {
 	}
 
 	// check if word in contained inside the other
+	comparison = numberComparison(left.length, right.length);
+
+	if (comparison === -1) {
+		if (left.indexOf(right) !== -1) {
+			// right word comes first
+			return 1;
+		}
+	} else if (comparison === 1) {
+		if (right.indexOf(left) !== -1) {
+			// right word comes first
+			return -1;
+		}
+	}
 
 	// compare words
+
+	// get index where words start to get different
 
 	leftValue = getWordInAscii(left);
 	rightValue = getWordInAscii(right);
