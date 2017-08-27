@@ -37,11 +37,15 @@ function getWordInAscii(word) {
 	return sum;
 }
 
+function getDifferentCharIndex(word1, word2) {
+	var length
+}
+
 /**
  * returns:
  *	 0 if same value
- *	-1 if left bigger
- *	 1 if right bigger
+ *	-1 if left word comes first
+ *	 1 if right word comes first
  */
 function wordComparison(_left, _right) {
 	var diff;
@@ -50,10 +54,23 @@ function wordComparison(_left, _right) {
 	var leftValue;
 	var rightValue;
 
-	// compare word length
-	// edit left and right word have same length when then are different
+	/**
+	 * Use cases:
+	 *	words are the same: returns 0
+	 *	words are different:
+	 *		left word comes first - returns -1
+	 *		right word comes first - returns 1
+	 *	one word is contained inside the other
+	 */
 
-	
+	// check if words are the same (they are both lower case)
+	if (left === right) {
+		return 0;
+	}
+
+	// check if word in contained inside the other
+
+	// compare words
 
 	leftValue = getWordInAscii(left);
 	rightValue = getWordInAscii(right);
@@ -79,6 +96,8 @@ console.log('Right value bigger 	(should return  1): ' + numberComparison(5, 10)
 
 console.log('---------------------------------------------');
 console.log('Word testing');
-console.log('Left value bigger (should return -1): ' + wordComparison('Tomato', 'Avocado'));
-console.log('Left value bigger (should return  0): ' + wordComparison('Tomato', 'Tomato'));
-console.log('Left value bigger (should return  1): ' + wordComparison('Avocado', 'Tomato'));
+console.log('Left value bigger						(should return -1): ' + wordComparison('Tomato', 'Avocado'));
+console.log('Equal values 							(should return  0): ' + wordComparison('Tomato', 'Tomato'));
+console.log('Right value bigger						(should return  1): ' + wordComparison('Avocado', 'Tomato'));
+console.log('Left word contained inside right word 	(should return  -1): ' + wordComparison('Like', 'Liked'));
+console.log('Right word contained inside left word 	(should return  1): ' + wordComparison('Liked', 'Like'));
