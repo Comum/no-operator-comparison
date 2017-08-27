@@ -38,7 +38,7 @@ function getWordInAscii(word) {
 }
 
 function getDifferentCharIndex(word1, word2) {
-	var length
+	var length;
 }
 
 /**
