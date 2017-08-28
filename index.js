@@ -54,6 +54,8 @@ function wordComparison(_left, _right) {
 	var leftValue;
 	var rightValue;
 	var comparison;
+	var index = 0;
+	var equalWords = true;
 
 	/**
 	 * Use cases:
@@ -87,6 +89,16 @@ function wordComparison(_left, _right) {
 	// compare words
 
 	// get index where words start to get different
+	while(equalWords) {
+		if (left[index] !== right[index]) {
+			equalWords = false;
+		}
+
+		index++;
+	}
+
+	left = left.substring(0, index);
+	right = right.substring(0, index);
 
 	leftValue = getWordInAscii(left);
 	rightValue = getWordInAscii(right);
