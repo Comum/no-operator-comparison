@@ -37,10 +37,6 @@ function getWordInAscii(word) {
 	return sum;
 }
 
-function getDifferentCharIndex(word1, word2) {
-	var length;
-}
-
 /**
  * returns:
  *	 0 if same value
