@@ -52,6 +52,7 @@ function wordComparison(_left, _right) {
 	var comparison;
 	var index = 0;
 	var equalWords = true;
+	var wordIndex;
 
 	/**
 	 * Use cases:
@@ -71,12 +72,14 @@ function wordComparison(_left, _right) {
 	comparison = numberComparison(left.length, right.length);
 
 	if (comparison === -1) {
-		if (left.indexOf(right) !== -1) {
+		wordIndex = left.indexOf(right);
+		if ((wordIndex !== -1) && (wordIndex !== 0)) {
 			// right word comes first
 			return 1;
 		}
 	} else if (comparison === 1) {
-		if (right.indexOf(left) !== -1) {
+		wordIndex = right.indexOf(left);
+		if ((wordIndex !== -1) && (wordIndex !== 0)) {
 			// right word comes first
 			return -1;
 		}
@@ -120,8 +123,10 @@ console.log('Right value bigger 	(should return  1): ' + numberComparison(5, 10)
 
 console.log('---------------------------------------------');
 console.log('Word testing');
-console.log('Left value bigger						(should return -1): ' + wordComparison('Tomato', 'Avocado'));
-console.log('Equal values 							(should return  0): ' + wordComparison('Tomato', 'Tomato'));
-console.log('Right value bigger						(should return  1): ' + wordComparison('Avocado', 'Tomato'));
-console.log('Left word contained inside right word 	(should return  -1): ' + wordComparison('Like', 'Liked'));
-console.log('Right word contained inside left word 	(should return  1): ' + wordComparison('Liked', 'Like'));
+console.log('Left value bigger (should return -1): ' + wordComparison('Tomato', 'Avocado'));
+console.log('Equal values (should return  0): ' + wordComparison('Tomato', 'Tomato'));
+console.log('Right value bigger (should return  1): ' + wordComparison('Avocado', 'Tomato'));
+console.log('Left word contained inside right word (should return  -1): ' + wordComparison('Like', 'Liked'));
+console.log('Right word contained inside left word (should return  1): ' + wordComparison('Liked', 'Like'));
+console.log('Left word contained inside right word not in the beginning (should return  -1): ' + wordComparison('Mento', 'Memento'));
+console.log('Right word contained inside left word not in the beginning (should return  1): ' + wordComparison('Carpool', 'Pool'));
